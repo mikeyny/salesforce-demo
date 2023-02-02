@@ -10,7 +10,7 @@ to run the app use python3 webhook.py
 
 app = Flask(__name__)
 
-@app.route('/contact', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def create_contact_webhook():
    # contact = request.get_json()
     data = request.data

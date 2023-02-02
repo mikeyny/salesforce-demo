@@ -8,7 +8,7 @@ def generate_token():
         'client_id': CONSUMER_KEY,
         'client_secret' : CONSUMER_SECRET,
         'username' : USERNAME,
-        'password' : PASSWORD
+        'password' : PASSWORD + SECURITY_TOKEN
     }
     oauth_endpoint = '/services/oauth2/token'
     response = requests.post(DOMAIN + oauth_endpoint, data=payload)
@@ -18,10 +18,10 @@ access_token = generate_token()
 
 # Define the data for the new contact
 contact_data = {
-    "FirstName": "John",
-    "LastName": "Doe",
-    "Email": "johndoe@example.com",
-    "Phone": "555-555-5555"
+    "FirstName": "Jir",
+    "LastName": "Doey",
+    "Email": "janee@example.com",
+    "Phone": "345-4565-5555"
 }
 
 # Make the API call to create the contact
@@ -29,7 +29,6 @@ response = requests.post(f'{DOMAIN}/services/data/v52.0/sobjects/Contact/',
                         headers={'Authorization': f'Bearer {access_token}',
                                  'Content-Type': 'application/json'},
                         json=contact_data)
-
 # Check the status code of the response
 if response.status_code == 201:
     print('Contact created successfully!')
